@@ -1,14 +1,14 @@
 {
-  "name": "gatsby-starter-ts",
-  "description": "A TypeScript starter for Gatsby that includes all you need to build amazing projects",
+  "name": "parallax-bay",
+  "description": "Website featuring parralax effect.",
   "version": "1.0.0",
   "private": true,
-  "author": "João Pedro Schmitz <hey@joaopedro.dev> (https://joaopedro.dev)",
+  "author": "Kacper Kochan <kacper.kochan@protonmail.com> (https://linkedin.com/in/se7t)",
   "license": "MIT",
   "keywords": [
-    "gatsby",
-    "starter",
-    "typescript"
+    "parallax",
+    "gsap",
+    "gatsby"
   ],
   "scripts": {
     "start": "gatsby develop",
@@ -27,9 +27,15 @@
     ]
   },
   "dependencies": {
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.3.0",
+    "@fontsource/oxygen": "^4.2.2",
     "gatsby": "3.3.0",
+    "gsap": "^3.6.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "scrollmagic": "^2.0.8",
+    "scrollmagic-plugin-gsap": "^1.0.4",
     "tsconfig-paths-webpack-plugin": "3.5.1"
   },
   "devDependencies": {
