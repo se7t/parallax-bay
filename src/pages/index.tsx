@@ -83,7 +83,7 @@ const ContentImages = styled(`div`)`
 `;
 
 const Card = styled(`div`)`
-  background-color: ${(props) => props.theme.colors.card};
+  /* background-color: $ {(props) => props.theme.colors.card}; */
 `;
 
 const ContentHeader = styled(`h5`)`
