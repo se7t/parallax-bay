@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { PageProps } from 'gatsby';
 import styled from '@emotion/styled';
 /** @jsx jsx */
-import { css, Global, jsx } from '@emotion/react';
+import { css, Global, jsx, ThemeProvider } from '@emotion/react';
 import '@fontsource/oxygen/400.css';
 import '@fontsource/oxygen/300.css';
 import 'normalize.css';
@@ -12,6 +12,19 @@ import gsap, { TimelineMax } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+const theme = {
+  colors: {
+    mainHue: `#0097FF`,
+    callToAction: `#81CBFF`,
+    primaryText: `#ffffff`,
+    secondaryText: `#D1D5D8`,
+    tertiaryText: `#AEB5BA`,
+    accent: `#68767F`,
+    card: `#223643`,
+    background: `#162B39`,
+  },
+};
 
 const Wrapper = styled(`section`)``;
 
@@ -30,7 +43,7 @@ const Logo = styled(`h2`)`
 `;
 
 const Button = styled(`a`)`
-  background-color: hsl(16, 44%, 51%);
+  background-color: ${(props) => props.theme.colors.callToAction};
   padding: 1rem 2rem;
   border-radius: 8px;
   font-size: 1rem;
@@ -55,7 +68,7 @@ const Title = styled(`h1`)`
 
 const Content = styled(`div`)`
   width: 100%;
-  background: hsl(180, 11%, 18%);
+  background: ${(props) => props.theme.colors.background};
   min-height: 100vh;
   z-index: 2;
   position: absolute;
@@ -69,15 +82,21 @@ const ContentImages = styled(`div`)`
   text-align: center;
 `;
 
+const Card = styled(`div`)`
+  background-color: ${(props) => props.theme.colors.card};
+`;
+
 const ContentHeader = styled(`h5`)`
   font-size: 1.5rem;
   font-weight: 400;
+  color: ${(props) => props.theme.colors.primaryText};
   letter-spacing: 0px;
 `;
 
 const ContentSubheader = styled(`h6`)`
   font-size: 1rem;
   font-weight: 400;
+  color: ${(props) => props.theme.colors.secondaryText};
   letter-spacing: 0.15px;
 `;
 
@@ -149,95 +168,97 @@ const Home: FC<PageProps> = () => {
   }
 
   return (
-    <div>
-      <Global
-        styles={css`
-          * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            color: #fff;
-            font-family: 'Oxygen', sans-serif;
-          }
-          body {
-            background: hsl(180, 11%, 18%);
-          }
-        `}
-      />
-      <Wrapper>
-        <NavBar>
-          <Logo>parallax-bay</Logo>
-          <Button>Sign up</Button>
-        </NavBar>
-        <Container>
-          <Title>Guacamole.</Title>
-          <StaticImage
-            src="../images/background.png"
-            alt="Background"
-            css={css`
-              position: absolute !important;
-              width: 100%;
-              height: 100vh;
-              object-fit: cover;
-              z-index: -1;
-            `}
-            className="background"
-          />
-          <StaticImage
-            src="../images/subject.png"
-            alt="Background"
-            css={css`
-              position: absolute !important;
-              width: 100%;
-              height: 100vh;
-              object-fit: cover;
-              z-index: -1;
-            `}
-            className="subject"
-          />
-        </Container>
-        <Content className="content">
-          <ContentImages className="contentImages">
-            <div>
-              <StaticImage
-                src="../images/one.jpg"
-                alt="one"
-                css={css`
-                  width: 50%;
-                `}
-              />
-              <ContentHeader>Zadar</ContentHeader>
-              <ContentSubheader>Lorem ipsum</ContentSubheader>
-            </div>
-            <div>
-              <StaticImage
-                src="../images/two.jpg"
-                alt="two"
-                css={css`
-                  width: 50%;
-                `}
-              />
-              <ContentHeader>Murter</ContentHeader>
-              <ContentSubheader>Lorem ipsum</ContentSubheader>
-            </div>
-          </ContentImages>
-          <Text className="text">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
-            corrupti mollitia possimus eius odio dolores labore inventore iure
-            tempora voluptatem eveniet, amet aperiam unde voluptates, molestiae
-            repellat fuga quibusdam voluptate minus earum. Facere fuga earum
-            delectus, asperiores aut eligendi doloremque.
-          </Text>
-          <Text className="text">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique
-            incidunt officia, a quidem culpa repellendus alias quo iure,
-            necessitatibus ad magni recusandae fuga. Minus, assumenda fugiat!
-            Officia quis quisquam temporibus doloribus sequi neque itaque
-            officiis perspiciatis, tempora harum dolorem tempore!
-          </Text>
-        </Content>
-      </Wrapper>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div>
+        <Global
+          styles={css`
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+              color: #f6f6f6;
+              font-family: 'Oxygen', sans-serif;
+            }
+            body {
+              background: #162b39;
+            }
+          `}
+        />
+        <Wrapper>
+          <NavBar>
+            <Logo>parallax-bay</Logo>
+            <Button>Sign up</Button>
+          </NavBar>
+          <Container>
+            <Title>Guacamole.</Title>
+            <StaticImage
+              src="../images/background.png"
+              alt="Background"
+              css={css`
+                position: absolute !important;
+                width: 100%;
+                height: 100vh;
+                object-fit: cover;
+                z-index: -1;
+              `}
+              className="background"
+            />
+            <StaticImage
+              src="../images/subject.png"
+              alt="Background"
+              css={css`
+                position: absolute !important;
+                width: 100%;
+                height: 100vh;
+                object-fit: cover;
+                z-index: -1;
+              `}
+              className="subject"
+            />
+          </Container>
+          <Content className="content">
+            <ContentImages className="contentImages">
+              <Card>
+                <StaticImage
+                  src="../images/one.jpg"
+                  alt="one"
+                  css={css`
+                    width: 50%;
+                  `}
+                />
+                <ContentHeader>Zadar</ContentHeader>
+                <ContentSubheader>Lorem ipsum</ContentSubheader>
+              </Card>
+              <Card>
+                <StaticImage
+                  src="../images/two.jpg"
+                  alt="two"
+                  css={css`
+                    width: 50%;
+                  `}
+                />
+                <ContentHeader>Murter</ContentHeader>
+                <ContentSubheader>Lorem ipsum</ContentSubheader>
+              </Card>
+            </ContentImages>
+            <Text className="text">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
+              corrupti mollitia possimus eius odio dolores labore inventore iure
+              tempora voluptatem eveniet, amet aperiam unde voluptates,
+              molestiae repellat fuga quibusdam voluptate minus earum. Facere
+              fuga earum delectus, asperiores aut eligendi doloremque.
+            </Text>
+            <Text className="text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+              Similique incidunt officia, a quidem culpa repellendus alias quo
+              iure, necessitatibus ad magni recusandae fuga. Minus, assumenda
+              fugiat! Officia quis quisquam temporibus doloribus sequi neque
+              itaque officiis perspiciatis, tempora harum dolorem tempore!
+            </Text>
+          </Content>
+        </Wrapper>
+      </div>
+    </ThemeProvider>
   );
 };
 
