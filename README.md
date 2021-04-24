@@ -1,60 +1,65 @@
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/26466516/107675788-31f54e00-6c77-11eb-96c9-58fd8a4c69ac.png" alt="Gatsby and TypeScript">
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/static/v1?label=PRs&message=welcome&style=for-the-badge&color=24B36B&labelColor=000000" alt="PRs welcome!" />
-
-  <img alt="License" src="https://img.shields.io/github/license/jpedroschmitz/gatsby-starter-ts?style=for-the-badge&color=24B36B&labelColor=000000">
-
-  <a href="https://twitter.com/intent/follow?screen_name=jpedroschmitz">
-    <img src="https://img.shields.io/twitter/follow/jpedroschmitz?style=for-the-badge&color=24B36B&labelColor=000000" alt="Follow @jpedroschmitz" />
+  <a href="https://www.github.com/se7t/parallax-bay">
+    <h1 align="center">parallax-bay</h1>
   </a>
 </p>
 
-<br>
+<h3>A static site with parallax effect on hero section.</h3>
+<br/>
 
-A TypeScript starter for Gatsby. No plugins and styling. Exactly the necessary to start 🔥
+## 🔬 Technologies used
 
-No plugins installed, great for advanced users.
+1.  **GatsbyJS**
 
-- 📏 **ESLint** — Pluggable JavaScript linter
-- 💖 **Prettier** - Opinionated Code Formatter
-- 🐶 **Husky** — Use git hooks with ease
-- 📄 **Commitizen** - Conventional commit messages CLI
-- 🚓 **Commitlint** - Lint commit messages
-- 🖌 **Renovate** - Dependency update tool
-- 🚫 **lint-staged** - Run linters against staged git files
-- 🗂 **Root import** - Import folders and files using the `@` prefix.
+    "A React-based open-source framework for creating websites and apps."
 
-## 🚀 Getting started
+    `https://www.gatsbyjs.com/`
 
-The best way to start with this template is using the Gatsby CLI.
+1.  **gsap**
 
+    "Professional-grade JavaScript animation for the modern web."
+
+    `https://greensock.com/gsap/`
+
+
+1.  **Emotion**
+
+    "A library designed for writing css styles with JavaScript, with powerful and predictable style composition."
+
+    `https://emotion.sh/docs/introduction`
+
+<br/>
+
+## 🖥️ Installation
+
+Clone the parallax-bay repository.
+
+```bash
+$ git clone https://github.com/se7t/parallax-bay.git
 ```
-npx gatsby new starter-ts https://github.com/jpedroschmitz/gatsby-starter-ts
+
+Use the package manager [yarn](https://yarnpkg.com/) to install parallax-bay.
+
+```bash
+$ yarn install
 ```
 
-If you prefer you can clone this repository and run the following commands inside the project folder:
+<br />
 
-1. `npm install` or `yarn`;
-2. `yarn start`;
+## 🧰 Usage
 
-To view the project you can open `http://localhost:8000`.
+To start the development server, use the package manager [yarn](https://yarnpkg.com/)
 
-## 🤝 Contributing
+```bash
+$ yarn run develop
+```
+ or [Gatsby CLI](https://www.gatsbyjs.com/docs/reference/gatsby-cli/)
 
-1. Fork this repository;
-2. Create your branch: `git checkout -b my-new-feature`;
-3. Commit your changes: `git commit -m 'Add some feature'`;
-4. Push to the branch: `git push origin my-new-feature`.
+```bash
+$ gatsby develop
+```
 
-**After your pull request is merged**, you can safely delete your branch.
 
-## 📝 License
+## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for more information.
-
----
-
-Made with ♥ by João Pedro Schmitz
+[MIT](https://github.com/se7t/parallax-bay/blob/master/LICENSE.md)
