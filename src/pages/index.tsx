@@ -2,22 +2,18 @@ import React, { FC } from 'react';
 import { PageProps } from 'gatsby';
 import styled from '@emotion/styled';
 /** @jsx jsx */
-import { css, jsx } from '@emotion/react';
+import { css, Global, jsx } from '@emotion/react';
 import '@fontsource/oxygen/400.css';
 import '@fontsource/oxygen/300.css';
 import 'normalize.css';
 import { StaticImage } from 'gatsby-plugin-image';
 
-const Wrapper = styled(`div`)`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    color: #fff;
-    font-family: 'Oxygen', sans-serif;
-    font-size: 16px;
-  }
-`;
+import gsap, { TimelineMax } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const Wrapper = styled(`section`)``;
 
 const NavBar = styled(`nav`)`
   position: absolute;
@@ -49,7 +45,7 @@ const Container = styled(`div`)`
 
 const Title = styled(`h1`)`
   position: absolute;
-  top: 40%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -40%);
   font-size: 6rem;
@@ -62,6 +58,7 @@ const Content = styled(`div`)`
   background: hsl(180, 11%, 18%);
   min-height: 100vh;
   z-index: 2;
+  position: absolute;
 `;
 
 const ContentImages = styled(`div`)`
@@ -91,78 +88,133 @@ const Text = styled(`p`)`
   padding: 2rem 20rem;
 `;
 
-const Home: FC<PageProps> = () => (
-  <Wrapper>
-    <NavBar>
-      <Logo>parallax-bay</Logo>
-      <Button>Sign up</Button>
-    </NavBar>
-    <Container>
-      <Title>Guacamole.</Title>
-      <StaticImage
-        src="../images/background.png"
-        alt="Background"
-        css={css`
-          position: absolute;
-          width: 100%;
-          height: 100vh;
-          object-fit: cover;
-          z-index: -2;
+const Home: FC<PageProps> = () => {
+  const isBrowser = typeof window !== `undefined`;
+
+  if (isBrowser) {
+    const timeline = new TimelineMax();
+
+    timeline
+      .to(`.subject`, {
+        scrollTrigger: {
+          trigger: `.container`,
+          pin: true,
+          scrub: 0.5,
+          start: `top top`,
+        },
+        duration: 3,
+        y: -200,
+      })
+      .to(`.background`, {
+        scrollTrigger: {
+          trigger: `.container`,
+          pin: true,
+          scrub: 0.5,
+          start: `top top`,
+        },
+        duration: 3,
+        y: 50,
+      })
+      .to(`.content`, {
+        scrollTrigger: {
+          trigger: `.container`,
+          pin: true,
+          scrub: 0.5,
+          start: `top top`,
+        },
+        duration: 3,
+        top: `0%`,
+      });
+  }
+
+  return (
+    <div>
+      <Global
+        styles={css`
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            color: #fff;
+            font-family: 'Oxygen', sans-serif;
+          }
         `}
       />
-      <StaticImage
-        src="../images/subject.png"
-        alt="Background"
-        css={css`
-          position: absolute;
-          width: 100%;
-          height: 100vh;
-          object-fit: cover;
-          z-index: -1;
-        `}
-      />
-    </Container>
-    <Content>
-      <ContentImages>
-        <div>
+      <Wrapper className="wrapper">
+        <NavBar>
+          <Logo>parallax-bay</Logo>
+          <Button>Sign up</Button>
+        </NavBar>
+        <Container>
+          <Title>Guacamole.</Title>
           <StaticImage
-            src="../images/one.jpg"
-            alt="one"
+            src="../images/background.png"
+            alt="Background"
             css={css`
-              width: 50%;
+              position: absolute !important;
+              width: 100%;
+              height: 100vh;
+              object-fit: cover;
+              z-index: -1;
             `}
+            className="background"
           />
-          <ContentHeader>Zadar</ContentHeader>
-          <ContentSubheader>Lorem ipsum</ContentSubheader>
-        </div>
-        <div>
           <StaticImage
-            src="../images/two.jpg"
-            alt="two"
+            src="../images/subject.png"
+            alt="Background"
             css={css`
-              width: 50%;
+              position: absolute !important;
+              width: 100%;
+              height: 100vh;
+              object-fit: cover;
+              z-index: -1;
             `}
+            className="subject"
           />
-          <ContentHeader>Murter</ContentHeader>
-          <ContentSubheader>Lorem ipsum</ContentSubheader>
-        </div>
-      </ContentImages>
-      <Text>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint corrupti
-        mollitia possimus eius odio dolores labore inventore iure tempora
-        voluptatem eveniet, amet aperiam unde voluptates, molestiae repellat
-        fuga quibusdam voluptate minus earum. Facere fuga earum delectus,
-        asperiores aut eligendi doloremque.
-      </Text>
-      <Text>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique
-        incidunt officia, a quidem culpa repellendus alias quo iure,
-        necessitatibus ad magni recusandae fuga. Minus, assumenda fugiat!
-        Officia quis quisquam temporibus doloribus sequi neque itaque officiis
-        perspiciatis, tempora harum dolorem tempore!
-      </Text>
-    </Content>
-  </Wrapper>
-);
+        </Container>
+        <Content className="content">
+          <ContentImages className="contentImages">
+            <div>
+              <StaticImage
+                src="../images/one.jpg"
+                alt="one"
+                css={css`
+                  width: 50%;
+                `}
+              />
+              <ContentHeader>Zadar</ContentHeader>
+              <ContentSubheader>Lorem ipsum</ContentSubheader>
+            </div>
+            <div>
+              <StaticImage
+                src="../images/two.jpg"
+                alt="two"
+                css={css`
+                  width: 50%;
+                `}
+              />
+              <ContentHeader>Murter</ContentHeader>
+              <ContentSubheader>Lorem ipsum</ContentSubheader>
+            </div>
+          </ContentImages>
+          <Text className="text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint
+            corrupti mollitia possimus eius odio dolores labore inventore iure
+            tempora voluptatem eveniet, amet aperiam unde voluptates, molestiae
+            repellat fuga quibusdam voluptate minus earum. Facere fuga earum
+            delectus, asperiores aut eligendi doloremque.
+          </Text>
+          <Text className="text">
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique
+            incidunt officia, a quidem culpa repellendus alias quo iure,
+            necessitatibus ad magni recusandae fuga. Minus, assumenda fugiat!
+            Officia quis quisquam temporibus doloribus sequi neque itaque
+            officiis perspiciatis, tempora harum dolorem tempore!
+          </Text>
+        </Content>
+      </Wrapper>
+    </div>
+  );
+};
 
 export default Home;
