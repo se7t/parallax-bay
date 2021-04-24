@@ -4,7 +4,9 @@
   </a>
 </p>
 
-<h3>A static site with parallax effect on hero section.</h3>
+<h3 align="center">A GatsbyJS static site with a parallax effect on hero section, created with GSAP and Emotion.js.</h3>
+<br/>
+<p>Preview available here: <a href="https://parallaxbay.gatsbyjs.io/">parallaxbay.gatsbyjs.io</a>.</p>
 <br/>
 
 ## 🔬 Technologies used
@@ -13,20 +15,21 @@
 
     "A React-based open-source framework for creating websites and apps."
 
-    `https://www.gatsbyjs.com/`
+    [`https://www.gatsbyjs.com/`](https://www.gatsbyjs.com/)
 
 1.  **gsap**
 
     "Professional-grade JavaScript animation for the modern web."
 
-    `https://greensock.com/gsap/`
+    [`https://greensock.com/gsap/`](https://greensock.com/gsap/)
 
 
 1.  **Emotion**
 
     "A library designed for writing css styles with JavaScript, with powerful and predictable style composition."
 
-    `https://emotion.sh/docs/introduction`
+    [`https://emotion.sh/docs/introduction`](https://emotion.sh/docs/introduction)
+    
 
 <br/>
 
