@@ -48,7 +48,7 @@ const Title = styled(`h1`)`
   top: 30%;
   left: 50%;
   transform: translate(-50%, -40%);
-  font-size: 6rem;
+  font-size: clamp(4rem, 10vw, 6rem);
   font-weight: 300;
   letter-spacing: -1.5px;
 `;
@@ -103,7 +103,7 @@ const Home: FC<PageProps> = () => {
           start: `top top`,
         },
         duration: 3,
-        y: -200,
+        y: -250,
       })
       .to(`.background`, {
         scrollTrigger: {
@@ -113,7 +113,7 @@ const Home: FC<PageProps> = () => {
           start: `top top`,
         },
         duration: 3,
-        y: 50,
+        y: 100,
       })
       .to(`.content`, {
         scrollTrigger: {
@@ -124,7 +124,28 @@ const Home: FC<PageProps> = () => {
         },
         duration: 3,
         top: `0%`,
-      });
+      })
+      .fromTo(
+        `.contentImages`,
+        {
+          opacity: 0,
+        },
+        {
+          duration: 3,
+          opacity: 1,
+        },
+      )
+      .fromTo(
+        `.text`,
+        {
+          opacity: 0,
+        },
+        {
+          duration: 3,
+          opacity: 1,
+        },
+        `-=3`,
+      );
   }
 
   return (
@@ -138,9 +159,12 @@ const Home: FC<PageProps> = () => {
             color: #fff;
             font-family: 'Oxygen', sans-serif;
           }
+          body {
+            background: hsl(180, 11%, 18%);
+          }
         `}
       />
-      <Wrapper className="wrapper">
+      <Wrapper>
         <NavBar>
           <Logo>parallax-bay</Logo>
           <Button>Sign up</Button>
