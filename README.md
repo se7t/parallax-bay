@@ -4,7 +4,7 @@
   </a>
 </p>
 
-<h3 align="center">A GatsbyJS static site with a parallax effect on hero section, created with GSAP and Emotion.js.</h3>
+<h3 align="center">A GatsbyJS static site with a parallax effect on hero section, created with GSAP and Emotion.js. Warning: Temporarily not working correctly on mobile.</h3>
 <br/>
 <p>Preview available here: <a href="https://parallaxbay.gatsbyjs.io/">parallaxbay.gatsbyjs.io</a>.</p>
 <br/>
